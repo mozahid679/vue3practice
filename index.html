@@ -4,29 +4,61 @@
       <meta charset="UTF-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Document</title>
+      <link
+         rel="shortcut icon"
+         href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACOElEQVR4Ae2UA7AcQRCG/9i2bdu2beumN7ZtWzMT27Zt27ZtXU20ddm97DO/qjGa1fDHH78D12pCsOPQN0kSnga3FYWg6b/aLnv7Dkn94emMbxYJnK5D0DosqhIIkNpSteHYBJ3FqPrh4cg0llJ3z+jdJnxHABigBEr7uaCnmNo8JhRCK6HcYdQ4DYAjnC1XZ84at1WBEZNZOt29R5BaHigE7TD57DUmNI2ui2M2SPr2XwUkXUDv/IHNQ9C0AATds7dzUIimOZ18OA6/EbRV7Vlpk6gJ9Kiw6EIj2CQI+grdxmrjz9hHTNQSQmiFjc7NG7uNkVVC4DecGAQtBrflxhRWRoVA0FH8QWpplUaGLtVmQ9AhE2FfnORQO52BbSHok+78BSZRLkAPp7nq0CVNUg8IOmVy/hhzWoTFb6Y2jAnJakA0qQ5ui2xULBLptLTQ2AN7koZWLjW/0wcugtNEywpwW0tdgu41ufcKYxtEcUnJjAFBby0ocB29qwTFb0STfKZ3J7PRLvXCIAvW14MjgtaZ3H8PbosLy0y3l2BBz5zE9Qx69w4IR6ZQBgj2zVhhNg0uQrAuTqwvDzOktsD4Db3E9t6BXZILISHonsFn++EM0SQpOH3+9502EC6G25oZWF/AQg5Jh3fPVFhdispySVd1H22CFWTj2BD0Tuf+znA1gur8SrxvmMwywyqShv9S4J4Kp2tR2c7ptL0tcWH4Iqt6L1hTuBnJSoLbksOlTGZ1VRj98cc78wMthIJSt9aMegAAAABJRU5ErkJggg=="
+         type="image/x-icon"
+      />
+      <title>Class 2</title>
       <script src="https://unpkg.com/vue@3"></script>
+      <style>
+         html,
+         body {
+            height: 100%;
+         }
+         body {
+            display: grid;
+            place-items: center;
+         }
+         button {
+            padding: 10px 30px;
+            border-radius: 8px;
+         }
+         h2 {
+            margin: 0;
+            padding: 0;
+         }
+         .text-red {
+            color: red;
+            border: 2px solid green;
+            transition: all 0.2s ease-in-out;
+         }
+         .text-green {
+            color: green;
+            transition: all 0.2s ease-in-out;
+
+            border: 2px solid red;
+         }
+      </style>
    </head>
    <body>
       <div id="app">
-         <p>
-            <input type="text" v-model="gretting" />
-         </p>
-         <p>{{ gretting }} ({{ gretting.length }})</p>
+         <button :class="active ? 'text-red': 'text-green'" @click="toggle">
+            <h2>Click Me</h2>
+         </button>
       </div>
 
       <script>
          Vue.createApp({
             data() {
                return {
-                  gretting: "Hello, world!",
+                  active: true,
                };
             },
-
-            mounted() {
-               setTimeout(() => {
-                  this.gretting = "Hello, there";
-               }, 1000);
+            methods: {
+               toggle() {
+                  this.active = !this.active;
+               },
             },
          }).mount("#app");
       </script>
