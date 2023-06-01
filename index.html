@@ -10,25 +10,18 @@
       <!-- Tailwindcss CDN -->
       <script src="https://cdn.tailwindcss.com"></script>
       <!-- Title -->
-      <title>Class 4</title>
+      <title>Class 5</title>
    </head>
    <body class="h-full grid place-items-center">
       <div id="app">
          <app-button>Submit</app-button>
       </div>
 
-      <script>
+      <script type="module">
+         import AppButton from "./js/componente/AppButton.js";
          let app = {
             components: {
-               "app-button": {
-                  template: `<button class="bg-gray-200 hover:bg-gray-300 border rounded px-4 py-2 disabled:cursor-not-allowed" disabled="processing"> <slot/></button>`,
-
-                  data() {
-                     return {
-                        processing: true,
-                     };
-                  },
-               },
+               "app-button": AppButton,
             },
          };
          Vue.createApp(app).mount("#app");
