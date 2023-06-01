@@ -4,27 +4,53 @@
       <meta charset="UTF-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="shortcut icon" href="#" type="image/x-icon" />
+      <link
+         rel="shortcut icon"
+         href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAhFBMVEX///+44Myw3cetyL+rsbjh4+XB5NIlsnY1tX0lOVQmPlUhOlNFV2lewJI+t4FCuINCu4Q9kHQ0P1s1SV6zub/f8edDvoU2VWGDzKg/pHs0PFuLlJ4rs3k5bGg1RV0ML0rp6+0vRFpteYY7hHDT699wxZ0+mXfr9vA3X2SZ1LdAq346d2zD7XyeAAABIklEQVR4Aa3RBbaDUAxF0Vt/aCh1N+rzn99Pgua77XqBLLIO/q7VFp2u6EH19EenLVroD5zwfN8PQqgw4B+eE4M+EMVElAzT0WgUjMHGAX9Nhwn/HUcAJgNi09mIBWDBiM2mxAYTsLmTEYsl/+2vgJXPX5YLGeDmUGsdsdnygd1+v+OP7UYHrJFrOxJyF4fj8SB3QMK1USCRnLZyhhzfnhISKGVrPWNU0ePrDJWzrnpJRyq96Ipn1K75qrftiG1v+YpXNNwdscdyxJYPYu4Ow8Uy4skjtk8ZEDtY/TUJOYHEug+rSlJHsKokzQjWPF81X3EOq06SJHkEyyQxESyqwLJJbARLkmgEyybRCJZNohEsm0QifKK1XrfwqSjC57IM/+0FV60eh/8r7TcAAAAASUVORK5CYII="
+         type="image/x-icon"
+      />
       <!-- VUE JS CDN -->
       <script src="https://unpkg.com/vue@3"></script>
       <!-- Tailwindcss CDN -->
       <script src="https://cdn.tailwindcss.com"></script>
+      <style>
+         @keyframes spinner {
+            to {
+               transform: rotate(360deg);
+            }
+         }
+         .is-loading {
+            color: transparent;
+         }
+
+         .is-loading:before {
+            content: "";
+            box-sizing: border-box;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin-top: -10px;
+            margin-left: -10px;
+            border-radius: 50%;
+            border: 2px solid #ccc;
+            border-top-color: #000;
+            animation: spinner 0.6s linear infinite;
+         }
+      </style>
       <!-- Title -->
       <title>Class 5</title>
    </head>
    <body class="h-full grid place-items-center">
       <div id="app">
-         <app-button>Submit</app-button>
+         <app-button :processing="true">Submit</app-button>
       </div>
 
       <script type="module">
-         import AppButton from "./js/componente/AppButton.js";
-         let app = {
-            components: {
-               "app-button": AppButton,
-            },
-         };
-         Vue.createApp(app).mount("#app");
+         import App from "./js/componente/App.js";
+
+         Vue.createApp(App).mount("#app");
       </script>
    </body>
 </html>
